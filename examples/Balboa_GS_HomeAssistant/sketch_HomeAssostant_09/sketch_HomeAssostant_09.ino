@@ -243,7 +243,7 @@ void loop() {
           
           display.setValue(Balboa.LCD_display.c_str());
           waterTemp.setValue(Balboa.waterTemperature);
-          tTemp.setValue(String(Balboa.setTemperature, 0, 4).c_str());       // Get Set TEMP
+          SetTemp.setValue(String(Balboa.setTemperature).c_str());           // Get Set TEMP
           stdmode.setState(Balboa.StandardMode);                             // Get STD mode
           ecomode.setState(Balboa.EcoMode);
           heater.setState(Balboa.Heater);                                    // Get heater status
