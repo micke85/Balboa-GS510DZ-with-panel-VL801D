@@ -230,8 +230,8 @@ void setup_HA() {
 /**************************************************************************/
 
 void loop() {
-
-	Balboa.loop();
+  ElegantOTA.loop();
+  Balboa.loop();
   mqtt.loop();
   server.handleClient();
   
