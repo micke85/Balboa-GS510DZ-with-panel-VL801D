@@ -13,7 +13,7 @@ This is a mix of the great work by MagnusPer project with GS510SZ and Shuraxxx, 
 
 Could possibly work with the GS523DZ models as well, as its the same display, I have not ability to try this.
 
-<img src="https://github.com/micke85/Balboa-GS510DZ-with-panel-DL801V/blob/main/Images/BalboaGS510DZVl801D.jpg" width="900">
+<img src="https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D/blob/main/Images/BalboaGS510DZVl801D.jpg" width="900">
 
 ## RJ45 pins
 <img src="https://github.com/Shuraxxx/-Balboa-GS523SZ-with-panel-VL801D-DeluxeSerie-/blob/main/src/img/RJ45.png" width="200">
