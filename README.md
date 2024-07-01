@@ -11,7 +11,7 @@ Identifing bits are still ongoing. List of definition you will find in the Balbo
 
 This is a mix of the great work by MagnusPer project with GS510SZ and Shuraxxx, GS523DZ.
 
-Could possibly work with the GS523DZ models as well, as its the same display, I have not ability to try this.
+Could possibly work with the GS523DZ models as well, as its the same display, I have no ability to try this.
 
 <img src="https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D/blob/main/Images/BalboaGS510DZVl801D.jpg" width="900">
 
