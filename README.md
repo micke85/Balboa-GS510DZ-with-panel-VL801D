@@ -8,6 +8,7 @@ Working project in it´s end of alpha face.
 - Defined different button for up/down with temp up/down.
 
 - Over The Air update now working
+  http://unitsIPadress/update
   
 Identifing bits are still ongoing. List of definition you will find in the Balboa_GS_Interface.h file
 
