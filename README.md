@@ -84,7 +84,7 @@ Magnus PCB board files you will find here: [PCB Balboa-GS510SZ](https://github.c
 ## Balboa Display panels information
 - http://service.balboa-instruments.com/appnotes/index.html?app_notes_vl801d.htm
 
-## Paternt nr 8550643
+## Display Paternt nr 8550643
 - https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/8550643
 
 
