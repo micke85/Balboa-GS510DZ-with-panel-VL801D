@@ -79,13 +79,13 @@ GS510DZ J1 Port to PCB control system port
 
 Display port to vl801D panel
 
+Magnus PCB board files you will find here: [PCB Balboa-GS510SZ](https://github.com/MagnusPer/Balboa-GS510SZ/tree/main/extras/PCB%20layout)
+
 ## Balboa Display panels information
 - http://service.balboa-instruments.com/appnotes/index.html?app_notes_vl801d.htm
 
 ## Paternt nr 8550643
 - https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/8550643
-
-Gerber files located here: [PCB Balboa-GS510SZ](https://github.com/Shuraxxx/-Balboa-GS523SZ-with-panel-VL801D-DeluxeSerie-/tree/main/extras/PCB%20layout )
 
 
 ## References of great help!
