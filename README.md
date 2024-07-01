@@ -7,6 +7,8 @@ Working project in it´s end of alpha face.
 
 - Defined different button for up/down with temp up/down.
 
+- Over The Air update now working
+  
 Identifing bits are still ongoing. List of definition you will find in the Balboa_GS_Interface.h file
 
 This is a mix of the great work by MagnusPer project with GS510SZ and Shuraxxx, GS523DZ.
