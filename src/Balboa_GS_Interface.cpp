@@ -1,4 +1,4 @@
-// 2024-06-25 Version 0.9
+// 2024-07-09 Version 0.95
 
 #include "Balboa_GS_Interface.h" 
 
@@ -16,6 +16,7 @@ bool BalboaInterface::writeLights;
 bool BalboaInterface::writePump1;
 bool BalboaInterface::writePump2;
 bool BalboaInterface::writeBlower;
+bool BalboaInterface::writeTimeMenu;
 unsigned long BalboaInterface::clockInterruptTime;
 int  BalboaInterface::clockBitCounter;  
 byte BalboaInterface::displayDataBuffer[displayDataBufferSize];
@@ -54,12 +55,14 @@ bool BalboaInterface::loop() {
     // Decode data once available 
     decodeDisplayData(); 
     
-   	 // Get setTemperature if not known 
-   	 if (setTemperature <= 1) {
-       		 TempMenu = true;
-       		 writeDisplayData = true;
+   	 // Get setTemperature if not known on start up
+ 	if (!isInitialized) {
+   	   TempMenu = true;
+   	   writeDisplayData = true;
+	   writeTempUp = true;
+  	  }
+  	  isInitialized = true;				// Set the flag to true to prevent re-running
 
-   		}
 
 		// Update tempreture
 		if (TempMenu && !TimeMenu) {
@@ -74,28 +77,28 @@ bool BalboaInterface::loop() {
 					writeDisplayData = true;
 					writeTempUp = true;		
 				}
-				updateTempButtonPresses--;
+			
 			}
 		}
-
-	}
+ 	 }
+		
 	return true;
-}
+	}
 
-//END
-  
+
+
 
 void BalboaInterface::updateTemperature(float Temperature){
 	
-	
+	 
 	float updateTempDifference = Temperature - setTemperature;
-	if (updateTempDifference < 0 && TempMenu == true) 		 { updateTempDirection = 1; }			// Temp down
-	else if (updateTempDifference > 0 && TempMenu == true)  	{ updateTempDirection = 2; }			// Temp up
-	else if (updateTempDifference == 0) { updateTempDirection = 0; }					
-	
-	updateTempButtonPresses = 1 + (abs(updateTempDifference) * 2);				// calculate how many times the "button" should be pressed 
-												// every button press = 0.5 and the first is to enter the menu																			
-		
+	if (updateTempDifference < 0 && TempMenu == true){ 
+	updateTempDirection = 1; }													// Temp down
+	else if (updateTempDifference > 0 && TempMenu == true){ 
+	updateTempDirection = 2; }													// Temp up
+	else if (updateTempDifference == 0) { 
+	updateTempDirection = 0; 
+	}																
 }
 	
 	
@@ -296,15 +299,15 @@ void BalboaInterface::decodeDisplayData() {
                   } 
 				  else if (x == 55) {
                         if ( displayDataBuffer[x] == 1){
-                            displayBit55 = true;
+                            displayTIME = true;
                         }
-                        else displayBit55 = false;
+                        else displayTIME = false;
                   } 
 				  else if (x == 56) {
                         if ( displayDataBuffer[x] == 1){
-                            displayBit56 = true;
+                            displaySET = true;
                         }
-                        else displayBit56 = false;
+                        else displaySET = false;
                   } 
 				  else if (x == 57) {
                         if ( displayDataBuffer[x] == 1){
@@ -332,9 +335,9 @@ void BalboaInterface::decodeDisplayData() {
                   } 
 				  else if (x == 61) {
                         if ( displayDataBuffer[x] == 1){
-                            displayBit61 = true;
+                            displayPM = true;
                         }
-                        else displayBit61 = false;
+                        else displayPM = false;
                   } 
 				  else if (x == 62) {
                         if ( displayDataBuffer[x] == 1){
@@ -344,9 +347,9 @@ void BalboaInterface::decodeDisplayData() {
                   } 
 				  else if (x == 63) {
                         if ( displayDataBuffer[x] == 1){
-                            displayBit63 = true;
+                            displayAM = true;
                         }
-                        else displayBit63 = false;
+                        else displayAM = false;
                   } 
 				  else if (x == 64) {
                         if ( displayDataBuffer[x] == 1){
@@ -409,23 +412,22 @@ void BalboaInterface::decodeDisplayData() {
            
              // check if temperature or something else is shown on LCD display
            
-             // No temperature is shown
-			 if(LCD_segment_1 == 0) {   
+		    // No temperature is shown
+			 if(LCD_segment_4 == 0) {   
                   LCD_display = LCD_display_1 + LCD_display_2 + LCD_display_3 + LCD_display_4; 
              } 
              
 			 // Temperature is shown
-			 else {
+			else {
                  
-			float Temperature = (10 * LCD_display_1.toInt() + LCD_display_2.toInt() + 0.1 * LCD_display_3.toInt());
+				float Temperature = (10 * LCD_display_1.toInt() + LCD_display_2.toInt() + 0.1 * LCD_display_3.toInt());
 				 
-				if (TempMenu == true) {setTemperature = Temperature;}
+				if (TempMenu == true && Temperature>=1) {setTemperature = Temperature;}
 				else {waterTemperature = Temperature;}  
-				                 
+				
 				LCD_display = LCD_display_1 + LCD_display_2 + "." + LCD_display_3 + LCD_display_4; 
-            }
-
-                          
+             }
+                         
             displayDataBufferReady = false;
             attachInterrupt(clockPin, clockPinInterrupt, CHANGE);
 }
@@ -455,51 +457,56 @@ void BalboaInterface::decodeDisplayData() {
                             
                           if (clockBitCounter == 72) {
                                  
-                                  if (writeButtonUp)    	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeButtonDown)	{ digitalWrite(buttonPin,HIGH);  }
+                                  if (writeButtonUp)    		{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeButtonDown)		{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writeTempUp)     	{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writeTempDown)   	{ digitalWrite(buttonPin,HIGH);  }
+								  else if (writeBlower)     	{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writeLights)      	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writePump1)     	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writePump2)     	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeBlower)     	{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writePump1)     		{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writePump2)     		{ digitalWrite(buttonPin,HIGH);  }
+							//	  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);  }
+                                  
                           }
 
                           else if (clockBitCounter == 73) {
                                  
-                                  if (writeButtonUp)    	{ digitalWrite(buttonPin,HIGH);  }
+                                  if (writeButtonUp)    		{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writeButtonDown)   	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeTempUp)    	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeTempDown)  	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeLights)     	  { digitalWrite(buttonPin,LOW);   }
-                                  else if (writePump1)     	  { digitalWrite(buttonPin,LOW);   }
-                                  else if (writePump2)     	  { digitalWrite(buttonPin,LOW);   }
-                                  else if (writeBlower)     	{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeTempUp)    		{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeTempDown)  		{ digitalWrite(buttonPin,HIGH);  }
+								  else if (writeBlower)     	{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeLights)				{ digitalWrite(buttonPin,LOW);   }
+                                  else if (writePump1)     	  		{ digitalWrite(buttonPin,LOW);   }
+                                  else if (writePump2)     	  		{ digitalWrite(buttonPin,LOW);   }
+							//	  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);  }
                           }
 						   
 
                           else if (clockBitCounter == 74) {
                                  
-                                  if (writeButtonUp)  		{ digitalWrite(buttonPin,HIGH);  }
+                                  if (writeButtonUp)  			{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writeButtonDown)  	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeTempUp)    	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeTempDown)	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeLights)     	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writePump1)    	  { digitalWrite(buttonPin,LOW);   }
-                                  else if (writePump2)     	{ digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeBlower)    	  { digitalWrite(buttonPin,LOW);   }
+                                  else if (writeTempUp)    		{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeTempDown)		{ digitalWrite(buttonPin,HIGH);  }
+								  else if (writeBlower)    	  		{ digitalWrite(buttonPin,LOW);   }
+                                  else if (writeLights)			{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writePump1)    	  		{ digitalWrite(buttonPin,LOW);   }
+                                  else if (writePump2)			{ digitalWrite(buttonPin,HIGH);  }
+							//	  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);  }         
                           }
 
                           else if (clockBitCounter == 75) {
                                   
-                                  if (writeButtonUp)  		   { digitalWrite(buttonPin,LOW);   }
-                                  else if (writeButtonDown) 	 { digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeTempUp)   	   { digitalWrite(buttonPin,LOW);   }
-                                  else if (writeTempDown) 	 { digitalWrite(buttonPin,HIGH);  }
-                                  else if (writeLights)   	 { digitalWrite(buttonPin,HIGH);  }
-                                  else if (writePump1)   	 { digitalWrite(buttonPin,HIGH);  }
-                                  else if (writePump2)   	   { digitalWrite(buttonPin,LOW);   }
-                                  else if (writeBlower)    	 { digitalWrite(buttonPin,HIGH);  }
+                                  if (writeButtonUp)				{ digitalWrite(buttonPin,LOW);   }
+                                  else if (writeButtonDown) 	{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeTempUp)   	   		{ digitalWrite(buttonPin,LOW);   }
+                                  else if (writeTempDown) 	 	{ digitalWrite(buttonPin,HIGH);  }
+								  else if (writeBlower)    	 	{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writeLights)   		{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writePump1)   	 	{ digitalWrite(buttonPin,HIGH);  }
+                                  else if (writePump2)				{ digitalWrite(buttonPin,LOW);   }
+                          //	  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);  }        
 
                                   writeButtonUp = false;
                                   writeButtonDown = false;
@@ -509,6 +516,7 @@ void BalboaInterface::decodeDisplayData() {
                                   writePump1 = false;
                                   writePump2 = false;
                                   writeBlower = false;
+						 //		writeTimeMenu = false;
                         }
                   }
 
@@ -545,8 +553,8 @@ String BalboaInterface::lockup_LCD_character(int LCD_character) {
           case B1011011: return "5";  break;
           case B1011111: return "6";  break;
           case B1110000: return "7";  break;
-          case B1111111: return "8";  break;
-	  case B1110011: return "9";  break;    
+		  case B1111111: return "8";  break;
+		  case B1110011: return "9";  break;    
           case B1110111: return "A";  break;
        // case B0011111: return "B";  break;	//Same binary as b
           case B1001110: return "C";  break;
