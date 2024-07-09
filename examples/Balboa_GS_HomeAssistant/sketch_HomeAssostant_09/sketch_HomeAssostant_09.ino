@@ -18,7 +18,7 @@
 #endif
 #include <ElegantOTA.h>                  // https://github.com/ayushsharma82/ElegantOTA
 #include <ArduinoHA.h>
-#include <Balboa_GS_Interface.h>        // https://github.com/MagnusPer/Balboa-GS510SZ    
+#include <Balboa_GS_Interface.h>        // https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D/   
 
 #ifdef ESP32
 #define setClockPin D1 // CHANGE ME
