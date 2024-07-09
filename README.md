@@ -1,3 +1,9 @@
+### version A 0.95
+Working project in it´s end of alpha face.
+
+- fix set temperature interference that occurred after a couple of hours.
+- fix water temperature interference.
+
 ### version A 0.9
 Working project in it´s end of alpha face.
 
