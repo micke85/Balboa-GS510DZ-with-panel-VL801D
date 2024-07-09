@@ -1,14 +1,11 @@
-  /*Mode
+ /*
  *    
  *    Main board: Wemos D1 mini - esp8266
  *  
  *    SPA display controller for Balboa system GS510DZ 
- *      Only temp working 2024-06-09
- *      Alfpha simple version
+ *    Alfpha simple version
  */
-    
 
-#include <WiFiClient.h>
 #ifdef ESP32
 #include <WebServer.h>
 #include <WiFi.h>
@@ -16,27 +13,29 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266WiFi.h>  
 #endif
-#include <ElegantOTA.h>                  // https://github.com/ayushsharma82/ElegantOTA
+#include <WiFiClient.h>
+#include <ElegantOTA.h>                 // https://github.com/ayushsharma82/ElegantOTA
 #include <ArduinoHA.h>
-#include <Balboa_GS_Interface.h>        // https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D/   
+#include <Balboa_GS_Interface.h>        //https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D/
 
 #ifdef ESP32
-#define setClockPin D1 // CHANGE ME
-#define setReadPin  D2 // CHANGE ME
-#define setWritePin D8 // CHANGE ME 
-#else
-#define setClockPin D1  
-#define setReadPin  D2 
-#define setWritePin D8  
+#define setClockPin 0 // CHANGE TO WHAT YOU HAVE, IF USING ESP32
+#define setReadPin  0 // CHANGE TO WHAT YOU HAVE, IF USING ESP32
+#define setWritePin 0 // CHANGE TO WHAT YOU HAVE, IF USING ESP32
+#else // if using 8266
+#define setClockPin D1 // D1 Acording to PCB board BY MagnusPer/Balboa-GS510SZ    
+#define setReadPin  D2 // D2 Acording to PCB board BY MagnusPer/Balboa-GS510SZ
+#define setWritePin D8 // D8 Acording to PCB board BY MagnusPer/Balboa-GS510SZ
 #endif
+
 
 //Constants
 const char *wifi_ssid                    = "wifi";          // WiFi SSID
 const char *wifi_pwd                     = "pass";          // WiFi Password 
 const char *wifi_hostname                = "SPA";
-const char* mqtt_server                  = "192.168.1.1";           // MQTT Boker IP, your home MQTT server eg Mosquitto on RPi, or some public MQTT
-const int mqtt_port                      = 1883;        // MQTT Broker PORT, default is 1883 but can be anything.
-const char *mqtt_user                    = "addons";          // MQTT Broker User Name
+const char* mqtt_server                  = "192.168.1.1";   // MQTT Boker IP, your home MQTT server eg Mosquitto on RPi, or some public MQTT
+const int mqtt_port                      = 1883;            // MQTT Broker PORT, default is 1883 but can be anything.
+const char *mqtt_user                    = "user";   	    // MQTT Broker User Name
 const char *mqtt_pwd                     = "pass";          // MQTT Broker Password 
 
 //Globals 
@@ -46,11 +45,15 @@ const unsigned long ReportTimerMillis    = 1000;   // Timer in milliseconds to r
 
 unsigned long ReportTimerPrevMillis      = 0;       // Store previous millis
 
-byte mac[] = {0x00, 0x10, 0xFA, 0x6E, 0x32, 0x4A};  // Leave this value, unless you own multiple hot tubs
+
+
+byte mac[] = {0x00, 0x10, 0xFA, 0x6E, 0x32, 0x4B};  // Leave this value, unless you own multiple hot tubs
 
 // MQTT Constants
 const char* mqtt_Subscribe_write_topic      = "SPA/Write"; 
 const char* mqtt_Subscribe_updateTemp_topic = "SPA/UpdateTemp";
+
+
 
 //Initialize components
 WiFiClient espClient;                                           // Setup WiFi client definition WiFi
@@ -78,8 +81,6 @@ HABinarySensor Filter1("Filter1");
 HABinarySensor Filter2("Filter2");
 HABinarySensor Filtration("Filtration");
 
-HABinarySensor BitTest("BitTest");
-
 HABinarySensor pump2("Pump2");
 HABinarySensor blower("Blower");
 
@@ -99,25 +100,27 @@ HAButton ButtonDownButton("ButtonDown");
 
 
 
+
 /**************************************************************************/
 /* Setup                                                                  */
 /**************************************************************************/
 
 void setup() {
   
-  if (debug) { Serial.begin(115200); Serial.println("Welcome to SPA - Balboa system GS510DZ");}
+  if (debug) { Serial.begin(115200); Serial.println("Welcome to Balboa GS510DZ version A 0.95");}
   setup_wifi();
   setup_HA();
   Serial.begin(115200);
   Balboa.begin();
-
+  
   server.on("/", []() {
-    server.send(200, "text/plain", "Hi! I am ESP8266 PCB bord 2 test3.");
+    server.send(200, "text/plain", "Hi! I am ESP8266, SPA version A 0.95");
   });
   
   ElegantOTA.begin(&server);    // Start ElegantOTA
   server.begin();
   if (debug) { Serial.println("HTTP server started"); }
+
 
 }
 
@@ -162,11 +165,11 @@ void setup_wifi() {
     if (debug){ Serial.print("WiFi connected: ");Serial.println(WiFi.localIP());}
 
 }
-// Need to clear & reconnect MQTT divice to see changes here
+// Any bigger MQTT changes will requre reset on MQTT to see changes
 
 void setup_HA() {
     device.setName("Balboa SPA");
-    device.setSoftwareVersion("0.90");
+    device.setSoftwareVersion("A 0.95");
     device.setManufacturer("Balboa");
     device.setModel("GS510DZ");
 
@@ -180,19 +183,16 @@ void setup_HA() {
 
     display.setName("Display");
     heater.setName("Heater");
-    pump1.setName("Pump1");
      
-    BitTest.setName("BitTest");
-
     Filter1.setName("Filter1");
     Filter2.setName("Filter2");
     Filtration.setName("Filtration");
-
+    
+    pump1.setName("Pump1");
     pump1Button.setName("Pump1");
     pump1Button.onCommand(onButtonPress);
 
     pump2.setName("Pump2");
-//    pump2.onCommand(onSwitchCommand);
     pump2Button.setName("Pump2");
     pump2Button.onCommand(onButtonPress);
 
@@ -217,12 +217,18 @@ void setup_HA() {
     ButtonDownButton.onCommand(onButtonPress);
 
     stdmode.setName("STD Mode");
+    // stdmodeButton.setName("StandardMode");
+    // stdmodeButton.onCommand(onButtonPress);
+
     ecomode.setName("ECO Mode");
-  
+    // ecomodeButton.setName("EcoMode");
+    // ecomodeButton.onCommand(onButtonPress);
 
-        mqtt.begin(mqtt_server, mqtt_user, mqtt_pwd);
 
 
+mqtt.begin(mqtt_server, mqtt_user, mqtt_pwd);
+
+   
 }
 
 /**************************************************************************/
@@ -231,7 +237,7 @@ void setup_HA() {
 
 void loop() {
   ElegantOTA.loop();
-  Balboa.loop();
+	Balboa.loop();
   mqtt.loop();
   server.handleClient();
   
@@ -243,18 +249,18 @@ void loop() {
           
           display.setValue(Balboa.LCD_display.c_str());
           waterTemp.setValue(Balboa.waterTemperature);
-          SetTemp.setValue(String(Balboa.setTemperature).c_str());           // Get Set TEMP
-          stdmode.setState(Balboa.StandardMode);                             // Get STD mode
-          ecomode.setState(Balboa.EcoMode);
-          heater.setState(Balboa.Heater);                                    // Get heater status
-          pump1.setState(Balboa.Pump1);
-          pump2.setState(Balboa.Pump2);
-          blower.setState(Balboa.Blower);
+          SetTemp.setValue(String(Balboa.setTemperature).c_str());       
+          stdmode.setState(Balboa.StandardMode);                     	 
+          ecomode.setState(Balboa.EcoMode);			     	 
+          heater.setState(Balboa.Heater);                            	 
+          pump1.setState(Balboa.Pump1);					
+          pump2.setState(Balboa.Pump2);					 
+          blower.setState(Balboa.Blower);					
           lights.setState(Balboa.Lights);
           Filter1.setState(Balboa.Filter1);
           Filter2.setState(Balboa.Filter2);
           Filtration.setState(Balboa.Filtration);
-          BitTest.setState(Balboa.displayBit55);                             //Test bit    
+                   
     } 
      
 }
@@ -274,12 +280,12 @@ void onButtonPress(HAButton* sender) {
              if (s_payload == "ButtonUp") {
                   Balboa.writeDisplayData = true; 
                   Balboa.writeButtonUp      = true;
-                  Serial.println(Balboa.setTemperature);
+                  //Serial.println(Balboa.setTemperature);
              }
              else if (s_payload == "ButtonDown") {
                   Balboa.writeDisplayData = true;
                   Balboa.writeButtonDown    = true;  
-                  Serial.println(Balboa.setTemperature);
+                  //Serial.println(Balboa.setTemperature);
              }
              else if (s_payload == "TempDown") {
                   Balboa.writeDisplayData = true;
