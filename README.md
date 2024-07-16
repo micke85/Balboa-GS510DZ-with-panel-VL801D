@@ -93,6 +93,9 @@ Magnus PCB board files you will find here: [PCB Balboa-GS510SZ](https://github.c
 ## Display Paternt nr 8550643
 - https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/8550643
 
+## Display functions
+- https://www.youtube.com/watch?v=idkXDjpJ8-8
+
 
 ## References of great help!
 - https://github.com/NickB1/OpenSpa/blob/master/documents/Balboa/Balboa_Display_Measurements.pdf
