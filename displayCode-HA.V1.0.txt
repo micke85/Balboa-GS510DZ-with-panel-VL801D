@@ -1,0 +1,478 @@
+type: horizontal-stack
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:mod-card
+        card:
+          type: custom:button-card
+          show_name: true
+          show_icon: false
+          show_state: false
+          entity: binary_sensor.balboa_spa_am
+          name: AM
+          styles:
+            card:
+              - text-align: left
+              - font-size: 10px
+              - width: 28px
+              - height: 10px
+              - background: transparent
+              - box-shadow: none
+              - margin: 0 !important
+              - padding: 0 !important
+              - margin-top: 30px !important
+              - margin-bottom: 0px !important
+          state:
+            - value: 'on'
+              color: rgb(255,180,0)
+              styles:
+                name:
+                  - color: rgb(255,180,0)
+            - value: 'off'
+              color: rgb(50,50,50)
+              styles:
+                name:
+                  - color: rgb(50,50,50)
+      - type: custom:mod-card
+        card:
+          type: custom:button-card
+          show_name: true
+          show_icon: false
+          show_state: false
+          entity: binary_sensor.balboa_spa_pm
+          name: PM
+          styles:
+            card:
+              - text-align: center
+              - font-size: 10px
+              - width: 28px
+              - height: 10px
+              - background: transparent
+              - box-shadow: none
+              - margin: 0 !important
+              - padding: 0 !important
+              - margin-top: 0px !important
+              - margin-bottom: 0px !important
+          state:
+            - value: 'on'
+              color: rgb(255,180,0)
+              styles:
+                name:
+                  - color: rgb(255,180,0)
+            - value: 'off'
+              color: rgb(50,50,50)
+              styles:
+                name:
+                  - color: rgb(50,50,50)
+      - type: custom:mod-card
+        card:
+          type: custom:button-card
+          show_name: true
+          show_icon: false
+          show_state: false
+          entity: binary_sensor.balboa_spa_filter1
+          name: Filter1
+          styles:
+            card:
+              - text-align: center
+              - font-size: 10px
+              - width: 28px
+              - height: 10px
+              - background: transparent
+              - box-shadow: none
+              - margin: 0 !important
+              - padding: 0 !important
+              - margin-top: 0px !important
+              - margin-bottom: 0px !important
+          state:
+            - value: 'on'
+              color: rgb(255,180,0)
+              styles:
+                name:
+                  - color: rgb(255,180,0)
+            - value: 'off'
+              color: rgb(50,50,50)
+              styles:
+                name:
+                  - color: rgb(50,50,50)
+      - type: custom:mod-card
+        card:
+          type: custom:button-card
+          show_name: true
+          show_icon: false
+          show_state: false
+          entity: binary_sensor.balboa_spa_filter2
+          name: Filter2
+          styles:
+            card:
+              - text-align: center
+              - font-size: 10px
+              - width: 29px
+              - height: 10px
+              - background: transparent
+              - box-shadow: none
+              - margin: 0 !important
+              - padding: 0 !important
+              - margin-top: 0px !important
+              - margin-bottom: 0px !important
+          state:
+            - value: 'on'
+              color: rgb(255,180,0)
+              styles:
+                name:
+                  - color: rgb(255,180,0)
+            - value: 'off'
+              color: rgb(50,50,50)
+              styles:
+                name:
+                  - color: rgb(50,50,50)
+  - type: vertical-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mod-card
+                card:
+                  type: custom:button-card
+                  show_name: true
+                  show_icon: false
+                  show_state: false
+                  entity: binary_sensor.balboa_spa_start
+                  name: START
+                  styles:
+                    card:
+                      - text-align: center
+                      - font-size: 10px
+                      - width: 32px
+                      - height: 8px
+                      - margin: 0 !important
+                      - padding: 0 !important
+                      - margin-top: 20px !important
+                      - margin-bottom: 0px !important
+                      - margin-left: 0px !important
+                      - background: transparent
+                      - box-shadow: none
+                    name:
+                      - color: var(--primary-text-color)
+                  state:
+                    - value: 'on'
+                      color: rgb(255,180,0)
+                      styles:
+                        name:
+                          - color: rgb(255,180,0)
+                    - value: 'off'
+                      color: rgb(50,50,50)
+                      styles:
+                        name:
+                          - color: rgb(50,50,50)
+              - type: custom:mod-card
+                card:
+                  type: custom:button-card
+                  show_name: true
+                  show_icon: false
+                  show_state: false
+                  entity: binary_sensor.balboa_spa_stop
+                  name: STOP
+                  styles:
+                    card:
+                      - text-align: center
+                      - font-size: 10px
+                      - width: 32px
+                      - height: 8px
+                      - margin: 0 !important
+                      - padding: 0 !important
+                      - margin-top: 20px !important
+                      - margin-bottom: 0px !important
+                      - background: transparent
+                      - box-shadow: none
+                    name:
+                      - color: var(--primary-text-color)
+                  state:
+                    - value: 'on'
+                      color: rgb(255,180,0)
+                      styles:
+                        name:
+                          - color: rgb(255,180,0)
+                    - value: 'off'
+                      color: rgb(50,50,50)
+                      styles:
+                        name:
+                          - color: rgb(50,50,50)
+      - type: custom:mod-card
+        card:
+          type: custom:button-card
+          show_name: false
+          show_icon: true
+          show_state: true
+          entity: sensor.balboa_spa_display
+          styles:
+            card:
+              - text-align: right
+              - width: 38px
+              - height: 85px
+              - margin-top: 0px
+              - background: transparent
+              - box-shadow: none
+              - margin: 0 !important
+              - padding: 0 !important
+            icon:
+              - width: 25px
+              - height: 40px
+              - margin-top: 5px
+              - margin-bottom: 25px
+              - color: |
+                  [[[
+                    if (states['binary_sensor.balboa_spa_timemenu'].state === 'on' || states['binary_sensor.balboa_spa_tempmenu'].state === 'on') {
+                      return 'rgb(255,140,0)';
+                    } else {
+                      return 'inherit';
+                    }
+                  ]]]
+            state:
+              - font-size: 14px
+              - margin-bottom: 27px
+          icon: |
+            [[[
+              if (states['binary_sensor.balboa_spa_timemenu'].state === 'on') {
+                return 'mdi:hours-12';
+              } else if (states['binary_sensor.balboa_spa_tempmenu'].state === 'on') {
+                return 'mdi:pool-thermometer';
+              } else {
+                return 'mdi:card-text-outline';
+              }
+            ]]]
+  - type: custom:mod-card
+    card:
+      type: custom:button-card
+      entity: sensor.balboa_spa_set_temp
+      icon: mdi:thermometer-minus
+      show_state: true
+      show_name: false
+      styles:
+        card:
+          - text-align: center
+          - width: 53px
+          - height: 120px
+          - background: transparent
+          - box-shadow: none
+          - margin: 0 !important; /* Ensure no margin */
+          - padding: 0 !important; /* Ensure no padding */
+        icon:
+          - width: 25px
+          - height: 25px
+          - margin-top: 10px
+        state:
+          - font-size: 14px
+          - margin-bottom: 27px
+      state:
+        - value: 40
+          icon: mdi:thermometer-lines
+          color: rgb(255,0,0)
+        - value: 39.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,20,0)
+        - value: 39
+          icon: mdi:thermometer-lines
+          color: rgb(255,40,0)
+        - value: 38.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,60,0)
+        - value: 38
+          icon: mdi:thermometer-lines
+          color: rgb(255,80,0)
+        - value: 37.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,100,0)
+        - value: 37
+          icon: mdi:thermometer-lines
+          color: rgb(255,120,0)
+        - value: 36.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,140,0)
+        - value: 36
+          icon: mdi:thermometer-lines
+          color: rgb(255,160,20)
+        - value: 35.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,180,40)
+        - value: 35
+          icon: mdi:thermometer-lines
+          color: rgb(255,155,0)
+        - value: 34.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,195,60)
+        - value: 34
+          icon: mdi:thermometer-lines
+          color: rgb(255,220,80)
+        - value: 33.5
+          icon: mdi:thermometer-lines
+          color: rgb(255,240,100)
+        - value: 33
+          icon: mdi:thermometer-lines
+          color: rgb(255,255,120)
+        - value: 32.5
+          icon: mdi:thermometer-lines
+          color: rgb(240,255,160)
+        - value: 32
+          icon: mdi:thermometer-lines
+          color: rgb(200,255,180)
+        - value: 31.5
+          icon: mdi:thermometer-lines
+          color: rgb(160,255,200)
+        - value: 31
+          icon: mdi:thermometer-lines
+          color: rgb(120,255,220)
+        - value: 30.5
+          icon: mdi:thermometer-lines
+          color: rgb(90,220,240)
+        - value: 30
+          icon: mdi:thermometer-lines
+          color: rgb(0,155,255)
+  - type: custom:mod-card
+    card:
+      type: custom:button-card
+      entity: sensor.balboa_spa_water_temperature
+      icon: mdi:water-alert-outline
+      show_state: true
+      show_name: false
+      styles:
+        card:
+          - text-align: center
+          - width: 65px
+          - height: 120px
+          - background: transparent
+          - box-shadow: none
+          - margin: 0 !important; /* Ensure no margin */
+          - padding: 0 !important; /* Ensure no padding */
+        icon:
+          - width: 27px
+          - height: 27px
+          - margin-top: 10px
+        state:
+          - font-size: 14px
+          - margin-bottom: 27px
+      state:
+        - value: 40
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,0,0)
+        - value: 39.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,20,0)
+        - value: 39
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,40,0)
+        - value: 38.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,60,0)
+        - value: 38
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,80,0)
+        - value: 37.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,100,0)
+        - value: 37
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,120,0)
+        - value: 36.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,140,0)
+        - value: 36
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,160,20)
+        - value: 35.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,180,40)
+        - value: 35
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,195,60)
+        - value: 34.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,220,80)
+        - value: 34
+          icon: mdi:water-thermometer-outline
+          color: rgb(255,240,100)
+        - value: 33.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(240,255,140)
+        - value: 33
+          icon: mdi:water-thermometer-outline
+          color: rgb(200,255,180)
+        - value: 32.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(160,255,200)
+        - value: 32
+          icon: mdi:water-thermometer-outline
+          color: rgb(120,255,220)
+        - value: 31.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(90,220,240)
+        - value: 31
+          icon: mdi:water-thermometer-outline
+          color: rgb(60,200,255)
+        - value: 30.5
+          icon: mdi:water-thermometer-outline
+          color: rgb(30,180,255)
+        - value: 30
+          icon: mdi:water-thermometer-outline
+          color: rgb(0,155,255)
+  - type: custom:mod-card
+    card:
+      type: custom:button-card
+      entity: binary_sensor.balboa_spa_pump1
+      icon: mdi:pump
+      show_state: true
+      show_name: false
+      styles:
+        card:
+          - text-align: center
+          - width: 65px
+          - height: 120px
+          - background: transparent
+          - box-shadow: none
+          - margin: 0 !important; /* Ensure no margin */
+          - padding: 0 !important; /* Ensure no padding */
+        icon:
+          - width: 25px
+          - height: 25px
+          - margin-top: 10px
+        state:
+          - font-size: 14px
+          - margin-bottom: 27px
+      state:
+        - value: 'On'
+          icon: mdi:pump
+          color: rgb(255,0,0)
+        - value: 'Off'
+          icon: mdi:pump-off
+          color: rgb(255,20,0)
+  - type: custom:mod-card
+    card:
+      type: custom:button-card
+      entity: binary_sensor.balboa_spa_lights
+      icon: mdi:car-parking-lights
+      show_state: true
+      show_name: false
+      styles:
+        card:
+          - text-align: center
+          - width: 65px
+          - height: 120px
+          - background: transparent
+          - box-shadow: none
+          - margin: 0 !important; /* Ensure no margin */
+          - padding: 0 !important; /* Ensure no padding */
+        icon:
+          - width: 25px
+          - height: 25px
+          - margin-top: 10px
+        state:
+          - font-size: 14px
+          - margin-bottom: 27px
+      state:
+        - value: 'On'
+          icon: mdi:car-parking-lights
+          color: rgb(255,0,0)
+        - value: 'Off'
+          icon: mdi:car-parking-lights
+          color: rgb(255,20,0)
