@@ -1,3 +1,35 @@
+### version 1.0
+
+Increasing the response time has been a big part of this update.
+The respons of input to output is now 1/3 of the time, close to direct respons.
+This has been important to be able to set/adjust the times under Time menu.
+
+
+Added a interface display script, for home-assistant.
+This holds the same information as the SPA display but in a small and compact information display in Home-assistant.
+Copy and paste the code in to the home assistant card code editor.
+Requires HACS installed and this extra cards
+* horizontal-stack card
+* Vertical-stack card
+* card-mod
+* Lovelace button-card
+
+
+**Update includes**
+ * All the binary code for SPA display buttons are now identified and added.
+ * Faster respons time. (500 ms).
+ * Most of the BITS are now identified.
+ * Small interface display for home assistant, Changing icons and colour change depending on temperature and menu.
+
+**Features still being worked on**.
+- Hvac for fast setting temperature request.
+- LED selector. (still working & testing this) 
+- Mode selector.
+
+**Known problems**
+- Set temp MQTT messages, seems to lose information sometimes, only showing part of the temp in home assistant.
+
+
 ### version A 0.95
 Working project in it´s end of alpha face.
 
