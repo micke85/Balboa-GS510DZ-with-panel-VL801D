@@ -14,6 +14,8 @@ Requires HACS installed and this extra cards
 * card-mod
 * Lovelace button-card
 
+ <img src="https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D/blob/main/Images/display-HA.jpg" width="300">
+
 
 **Update includes**
  * All the binary code for SPA display buttons are now identified and added.
