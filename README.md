@@ -7,7 +7,7 @@ This has been important to be able to set/adjust the times under Time menu.
 
 Added a interface display script, for home-assistant.
 This holds the same information as the SPA display but in a small and compact information display in Home-assistant.
-Copy and paste the code in to the home assistant card code editor.
+Copy (displayCode-HA.V1.0.txt) and paste the code in to the home assistant card code editor.
 Requires HACS installed and this extra cards
 * horizontal-stack card
 * Vertical-stack card
@@ -52,7 +52,7 @@ Working project in it´s end of alpha face.
   
 Identifing bits are still ongoing. List of definition you will find in the Balboa_GS_Interface.h file
 
-This is a mix of the great work by MagnusPer project with GS510SZ and Shuraxxx, GS523DZ.
+This is built on the the great work by MagnusPer project with GS510SZ and Shuraxxx, GS523DZ.
 
 Could possibly work with the GS523DZ models as well, as its the same display, I have no ability to try this.
 
