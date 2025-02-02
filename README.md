@@ -15,6 +15,9 @@
 - Thanks to [janco245](https://github.com/janco245), we now know the script works with GS523DZ with out any bigger problems to my understanding.
 - It should work with all Balboa model5xxDZ control systems, using the VL801D panel and maybe even the VL802D.
 
+**How to update**
+- Compile the script in ardunio (Export compiled binary) and upload the file by the page http://unitsIPadress/update
+- If you are missing any functions, clear your MQTT protocols in home assistant.
 
 ### version 1.0
 
