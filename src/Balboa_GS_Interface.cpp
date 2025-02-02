@@ -1,4 +1,5 @@
-// 2024-08-30 Version 1.0
+// 2025-01-02 Version 1.1
+
 
 #include "Balboa_GS_Interface.h" 
 
@@ -102,6 +103,23 @@ void BalboaInterface::updateTemperature(float Temperature){
 	if (updateTempDifference < 0 && TempMenu == true){ 
 	updateTempDirection = 1; }													// Temp down
 	else if (updateTempDifference > 0 && TempMenu == true){ 
+	updateTempDirection = 2; }													// Temp up
+	else if (updateTempDifference == 0) { 
+	updateTempDirection = 0; }
+	
+	updateTempButtonPresses = 1 + (abs(updateTempDifference) * 2);				// calculate how many times the "button" should be pressed 
+																				// every button press = 0.5 and the first is to enter the menu					
+}
+
+void BalboaInterface::HVACupdateTemperature(float Temperature){
+	
+	 
+	float updateTempDifference = Temperature - setTemperature;
+	if (updateTempDifference < 0){ 
+	writeTempUp = true;
+	updateTempDirection = 1; }													// Temp down
+	else if (updateTempDifference > 0){
+	writeTempDown = true;	
 	updateTempDirection = 2; }													// Temp up
 	else if (updateTempDifference == 0) { 
 	updateTempDirection = 0; }
@@ -503,7 +521,7 @@ void BalboaInterface::decodeDisplayData() {
                                   else if (writeLights)      	{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writePump1)     		{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writePump2)     		{ digitalWrite(buttonPin,HIGH);  }
-								  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);  }		//Allows for ECO,STD, SLP MODE change via time menu.... if low no time menu..
+								  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);  }
 								  else if (writeModeProg)     	{ digitalWrite(buttonPin,HIGH);  } 	
                                   
                           }
@@ -518,7 +536,7 @@ void BalboaInterface::decodeDisplayData() {
                                   else if (writeLights)				{ digitalWrite(buttonPin,LOW);   }
                                   else if (writePump1)     	  		{ digitalWrite(buttonPin,LOW);   }
                                   else if (writePump2)     	  		{ digitalWrite(buttonPin,LOW);   }
-								  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);   }				//Time menu
+								  else if (writeTimeMenu)     	{ digitalWrite(buttonPin,HIGH);   }	
 								  else if (writeModeProg)     		{ digitalWrite(buttonPin,LOW);	 }	
                           }
 						   
@@ -533,8 +551,8 @@ void BalboaInterface::decodeDisplayData() {
                                   else if (writeLights)			{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writePump1)    	  		{ digitalWrite(buttonPin,LOW);   }
                                   else if (writePump2)			{ digitalWrite(buttonPin,HIGH);  }
-								  else if (writeTimeMenu)     		{ digitalWrite(buttonPin,LOW);   }         //starts Pump2
-								  else if (writeModeProg)     		{ digitalWrite(buttonPin,LOW);   }         //HIGH LOW LOW
+								  else if (writeTimeMenu)     		{ digitalWrite(buttonPin,LOW);   } 
+								  else if (writeModeProg)     		{ digitalWrite(buttonPin,LOW);   } 
                           }
 
                           else if (clockBitCounter == 75) {
@@ -547,7 +565,7 @@ void BalboaInterface::decodeDisplayData() {
                                   else if (writeLights)   		{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writePump1)   	 	{ digitalWrite(buttonPin,HIGH);  }
                                   else if (writePump2)				{ digitalWrite(buttonPin,LOW);   }
-								  else if (writeTimeMenu)     		{ digitalWrite(buttonPin,LOW);   }  		//Starts PUMP1     
+								  else if (writeTimeMenu)     		{ digitalWrite(buttonPin,LOW);   }    
 								  else if (writeModeProg)     		{ digitalWrite(buttonPin,LOW);   } 	
 
                                   writeButtonUp = false;

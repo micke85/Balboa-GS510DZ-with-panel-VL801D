@@ -1,4 +1,5 @@
-// 2024-08-30 Version 1.0
+// 2025-02-01 Version 1.1
+
 #ifndef Balboa_GS_Interface_h
 #define Balboa_GS_Interface_h
 
@@ -27,19 +28,20 @@ class BalboaInterface {
     	void stop();                                    // Disables the clock hardware interrupt 
     	void resetStatus();                             // Resets the state of all status components as changed for sketches to get the current status	
 	void updateTemperature(float Temperature);			// Function to set the water temperature 	
-	  
+	void HVACupdateTemperature(float Temperature);		// Function to set the HVAC water temperature 
+	
 	bool isInitialized = false;							// Define a flag to track if the initialization has been done of setTempreture on start up
 	bool ModeChange = false;	
 	// Status tracking
 	float waterTemperature;                				// Water temperature
-	float SetTemp;                						// Set water temp  
+	// float SetTemp;                						// Set water temp  
 	float setTemperature;                				// The wanted set temperature
  			  
 
 
 	String LCD_display;				// The text shown on display					| Bit 1-28
 	bool displayButton;        		// Up/Down button pressed 						| Bit 29
-	bool TimeMenu;        			// Time menu button								/ Bit 30
+	bool TimeMenu;        			// Time menu button								| Bit 30
 	bool displayBit31;        		// Still unknown functionality, if at all used! | Bit 31 
 	bool displayBit32;        		// Still unknown functionality, if at all used!	| Bit 32
 	bool displayBit33;        		// ? ON ?										| Bit 33
@@ -53,7 +55,7 @@ class BalboaInterface {
    	bool displayBit41;				// Still unknown functionality, if at all used! | Bit 41
 	bool Blower;                  	// Blower running or not 						| Bit 42
 	bool displayBit43;				// Something to do with Filters	I belive		| Bit 43			*shows on in menu under filters and also when filter 1 & 2 are on.			
-	bool Filtration;				// Show Filtrations 							| Bit 44
+	bool Filtration;				// Show Filtrations or ?						| Bit 44			*A bit uncertain about this is really right, start jumping when in eco and sleep mode
 	bool displayBit45;				// Still unknown functionality, if at all used! | Bit 45			*got it to go on/off for some reason, while pressing buttons, but cant reapete it.
 	bool displayBit46;				// Still unknown functionality, if at all used! | Bit 46
 	bool Lights;        			// SPA lights activated or not 					| Bit 47
