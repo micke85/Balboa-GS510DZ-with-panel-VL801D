@@ -1,3 +1,21 @@
+### version 1.1
+
+- HVAC entity intergrated and added. Only Heat mode should be visible. Adjustable inbetween 26-40°C. 
+- Testbit. is now connect to bit43. something to do with the filtation I belive. Let me know if anyone figurs what this bit communicates.
+
+**Features still being worked on**.
+- LED selector. (still working & testing this) 
+- Mode selector.
+
+**Known problems**
+- Bit44 "Filtration", A bit uncertain about if this is really correct, the bit jumps on and off, when in eco and sleep mode.
+- Set temp MQTT messages, seems to lose information sometimes, only showing part of the temp in home assistant.
+
+**Works with GS523DZ**
+- Thanks to janco245, we now know the script works with GS523DZ with out any bigger problems to my understanding.
+- It should work with all Balboa model5xxDZ control systems, using the VL801D panel and maybe even the VL802D.
+
+
 ### version 1.0
 
 Increasing the response time has been a big part of this update.
