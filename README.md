@@ -18,6 +18,7 @@
 **How to update**
 - Compile the script in ardunio (Export compiled binary) and upload the file by the page http://unitsIPadress/update
 - If you are missing any functions, clear your MQTT protocols in home assistant.
+- Dont forget to update Balboa_GS_Interface.cpp and Balboa_GS_Interface.h
 
 ### version 1.0
 
