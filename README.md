@@ -12,7 +12,7 @@
 - Set temp MQTT messages, seems to lose information sometimes, only showing part of the temp in home assistant.
 
 **Works with GS523DZ**
-- Thanks to janco245, we now know the script works with GS523DZ with out any bigger problems to my understanding.
+- Thanks to [janco245](https://github.com/janco245), we now know the script works with GS523DZ with out any bigger problems to my understanding.
 - It should work with all Balboa model5xxDZ control systems, using the VL801D panel and maybe even the VL802D.
 
 
@@ -151,8 +151,9 @@ Magnus PCB board files you will find here: [PCB Balboa-GS510SZ](https://github.c
 
 ## References of great help!
 - https://github.com/NickB1/OpenSpa/blob/master/documents/Balboa/Balboa_Display_Measurements.pdf
-- https://www.olivierhill.ca/archives/72-The-Internet-of-Spas.html
-- https://create.arduino.cc/projecthub/meljr/7-segment-led-displays-102-using-a-shift-register-6b6976
+- https://github.com/olivierhill
+- https://www.hackster.io/meljr/7-segment-led-displays-102-using-a-shift-register-6b6976
+- https://www.home-assistant.io/integrations/climate/
 
 ## Other Balboa projects 
 - GL2000 Series https://github.com/netmindz/balboa_GL_ML_spa_control
