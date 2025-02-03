@@ -12,7 +12,7 @@
 - Set temp MQTT messages, seems to lose information sometimes, only showing part of the temp in home assistant.
 
 **Works with GS523DZ**
-- Thanks to [janco245](https://github.com/janco245), we now know the script works with GS523DZ with out any bigger problems to my understanding.
+- Thanks to [janco245](https://github.com/janco245), we now know the script works with GS523DZ, without any bigger problems to my understanding.
 - It should work with all Balboa model5xxDZ control systems, using the VL801D panel and maybe even the VL802D.
 
 **How to update**
