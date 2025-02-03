@@ -1,3 +1,6 @@
+### version 1.15
+- Small safty change, to secure that HVAC is disabled in time menu.
+
 ### version 1.1
 
 - HVAC entity intergrated and added. Only Heat mode should be visible. Adjustable inbetween 26-40°C. 
