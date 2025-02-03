@@ -1,7 +1,7 @@
 ### version 1.1
 
 - HVAC entity intergrated and added. Only Heat mode should be visible. Adjustable inbetween 26-40°C. 
-- Testbit. is now connect to bit43. something to do with the filtation I belive. Let me know if anyone figurs what this bit communicates.
+- Testbit. is now connect to bit43. something to do with the filtation I belive. Let me know if anyone figurs out what this bit communicates.
 
 **Features still being worked on**.
 - LED selector. (still working & testing this) 
