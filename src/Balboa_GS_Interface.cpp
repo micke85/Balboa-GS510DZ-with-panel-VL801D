@@ -1,4 +1,4 @@
-// 2025-01-02 Version 1.1
+// 2025-01-02 Version 1.15
 
 
 #include "Balboa_GS_Interface.h" 
@@ -111,14 +111,15 @@ void BalboaInterface::updateTemperature(float Temperature){
 																				// every button press = 0.5 and the first is to enter the menu					
 }
 
+//HVAC update
 void BalboaInterface::HVACupdateTemperature(float Temperature){
 	
 	 
 	float updateTempDifference = Temperature - setTemperature;
-	if (updateTempDifference < 0){ 
+	if (updateTempDifference < 0 && !TimeMenu){ 
 	writeTempUp = true;
 	updateTempDirection = 1; }													// Temp down
-	else if (updateTempDifference > 0){
+	else if (updateTempDifference > 0 && !TimeMenu){
 	writeTempDown = true;	
 	updateTempDirection = 2; }													// Temp up
 	else if (updateTempDifference == 0) { 
