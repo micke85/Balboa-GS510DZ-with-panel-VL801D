@@ -62,7 +62,7 @@ const char* mqtt_Subscribe_updateTemp_topic = "SPA/UpdateTemp";
 //Initialize components
 WiFiClient espClient;                                           // Setup WiFi client definition WiFi
 HADevice device(mac, sizeof(mac));
-HAMqtt mqtt(espClient, device, 34);                             // Max amount devices as sensors, buttons MQTT
+HAMqtt mqtt(espClient, device, 35);                             // Max amount devices as sensors, buttons MQTT
 BalboaInterface Balboa(setClockPin, setReadPin, setWritePin);   // Setup Balboa interface 
 #ifdef ESP32
 WebServer server(80);
