@@ -45,7 +45,7 @@ const char* mqtt_server                  = "";   		// MQTT Boker IP, your home M
 const int mqtt_port                      = 1883;        // MQTT Broker PORT, default is 1883 but can be anything.
 const char *mqtt_user                    = "";          // MQTT Broker User Name
 const char *mqtt_pwd                     = "";      	// MQTT Broker Password 
-const char* ReleaseVersion               = "1.15";       // Release Version latest version you will find at https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D
+const char* ReleaseVersion               = "1.16";       // Release Version latest version you will find at https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D
 
 //Globals 
 bool debug                               = false;      // If true activate debug values to write to serial port
