@@ -1,5 +1,11 @@
-### version 1.15
-- Small safty change, to secure that HVAC is disabled in time menu.
+/*
+MQTT protocol for cummnucating with Balboa VL801D panel and Home assistant, should work with all Balboa 5xxDZ control systems and maybe VL802D
+
+### Release version 1.16
+- Smaller bug fixes
+- Patch bump 
+ ElegantOTA 3.1.6,  Arduino_ESP32_OTA 0.3.1
+
 
 ### version 1.1
 
