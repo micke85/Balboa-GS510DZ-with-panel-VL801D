@@ -1,6 +1,13 @@
 /*
 MQTT protocol for cummnucating with Balboa VL801D panel and Home assistant, should work with all Balboa 5xxDZ control systems and maybe VL802D
 
+Realse version 1.16
+Fixed heat mode selectable 
+
+Patch bump 
+ElegantOTA 3.1.6
+Arduino_ESP32_OTA 0.3.1
+
 Realse version 1.15
 Added that the HVAC should be disabled, if in time menu.
 
@@ -62,7 +69,7 @@ const char* mqtt_Subscribe_updateTemp_topic = "SPA/UpdateTemp";
 //Initialize components
 WiFiClient espClient;                                           // Setup WiFi client definition WiFi
 HADevice device(mac, sizeof(mac));
-HAMqtt mqtt(espClient, device, 35);                             // Max amount devices as sensors, buttons MQTT
+HAMqtt mqtt(espClient, device, 34);                             // Max amount devices as sensors, buttons MQTT
 BalboaInterface Balboa(setClockPin, setReadPin, setWritePin);   // Setup Balboa interface 
 #ifdef ESP32
 WebServer server(80);
@@ -122,8 +129,18 @@ void onTargetTemperatureCommand(HANumeric temperature, HAHVAC* sender) {
     float temperatureFloat = temperature.toFloat();
     Balboa.HVACupdateTemperature(temperatureFloat);
     sender->setTargetTemperature(temperature); // report target temperature back to the HA panel
-
 }
+
+void onModeCommand(HAHVAC::Mode mode, HAHVAC* sender) {
+    Serial.print("Mode: ");
+    if (mode == HAHVAC::OffMode) {
+        Serial.println("off");
+    } else if (mode == HAHVAC::HeatMode) {
+        Serial.println("heat");
+    }
+    sender->setMode(mode); // report mode back to the HA panel
+}
+
 /**************************************************************************/
 /* Setup                                                                  */
 /**************************************************************************/
@@ -310,7 +327,8 @@ void loop() {
              
           hvac.setCurrentTemperature(Balboa.waterTemperature);
           hvac.setTargetTemperature(Balboa.setTemperature);
-          hvac.onTargetTemperatureCommand(onTargetTemperatureCommand);                
+          hvac.onTargetTemperatureCommand(onTargetTemperatureCommand);   
+	  hvac.onModeCommand(onModeCommand);               
     } 
      
 }
