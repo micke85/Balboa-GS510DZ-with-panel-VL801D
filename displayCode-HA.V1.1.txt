@@ -22,13 +22,15 @@ cards:
               - padding: 0 !important
               - margin-top: 30px !important
               - margin-bottom: 0px !important
+              - border: none
+              - outline: none
           state:
-            - value: 'on'
+            - value: "on"
               color: rgb(255,180,0)
               styles:
                 name:
                   - color: rgb(255,180,0)
-            - value: 'off'
+            - value: "off"
               color: rgb(50,50,50)
               styles:
                 name:
@@ -53,13 +55,15 @@ cards:
               - padding: 0 !important
               - margin-top: 0px !important
               - margin-bottom: 0px !important
+              - border: none
+              - outline: none
           state:
-            - value: 'on'
+            - value: "on"
               color: rgb(255,180,0)
               styles:
                 name:
                   - color: rgb(255,180,0)
-            - value: 'off'
+            - value: "off"
               color: rgb(50,50,50)
               styles:
                 name:
@@ -74,7 +78,7 @@ cards:
           name: Filter1
           styles:
             card:
-              - text-align: center
+              - text-align: left
               - font-size: 10px
               - width: 28px
               - height: 10px
@@ -84,13 +88,15 @@ cards:
               - padding: 0 !important
               - margin-top: 0px !important
               - margin-bottom: 0px !important
+              - border: none
+              - outline: none
           state:
-            - value: 'on'
+            - value: "on"
               color: rgb(255,180,0)
               styles:
                 name:
                   - color: rgb(255,180,0)
-            - value: 'off'
+            - value: "off"
               color: rgb(50,50,50)
               styles:
                 name:
@@ -105,9 +111,9 @@ cards:
           name: Filter2
           styles:
             card:
-              - text-align: center
+              - text-align: left
               - font-size: 10px
-              - width: 29px
+              - width: 28px
               - height: 10px
               - background: transparent
               - box-shadow: none
@@ -115,13 +121,15 @@ cards:
               - padding: 0 !important
               - margin-top: 0px !important
               - margin-bottom: 0px !important
+              - border: none
+              - outline: none
           state:
-            - value: 'on'
+            - value: "on"
               color: rgb(255,180,0)
               styles:
                 name:
                   - color: rgb(255,180,0)
-            - value: 'off'
+            - value: "off"
               color: rgb(50,50,50)
               styles:
                 name:
@@ -142,9 +150,9 @@ cards:
                   name: START
                   styles:
                     card:
-                      - text-align: center
+                      - text-align: left
                       - font-size: 10px
-                      - width: 32px
+                      - width: 30px
                       - height: 8px
                       - margin: 0 !important
                       - padding: 0 !important
@@ -153,15 +161,17 @@ cards:
                       - margin-left: 0px !important
                       - background: transparent
                       - box-shadow: none
+                      - border: none
+                      - outline: none
                     name:
                       - color: var(--primary-text-color)
                   state:
-                    - value: 'on'
+                    - value: "on"
                       color: rgb(255,180,0)
                       styles:
                         name:
                           - color: rgb(255,180,0)
-                    - value: 'off'
+                    - value: "off"
                       color: rgb(50,50,50)
                       styles:
                         name:
@@ -176,9 +186,9 @@ cards:
                   name: STOP
                   styles:
                     card:
-                      - text-align: center
+                      - text-align: right
                       - font-size: 10px
-                      - width: 32px
+                      - width: 50px
                       - height: 8px
                       - margin: 0 !important
                       - padding: 0 !important
@@ -186,15 +196,52 @@ cards:
                       - margin-bottom: 0px !important
                       - background: transparent
                       - box-shadow: none
+                      - border: none
+                      - outline: none
                     name:
                       - color: var(--primary-text-color)
                   state:
-                    - value: 'on'
+                    - value: "on"
                       color: rgb(255,180,0)
                       styles:
                         name:
                           - color: rgb(255,180,0)
-                    - value: 'off'
+                    - value: "off"
+                      color: rgb(50,50,50)
+                      styles:
+                        name:
+                          - color: rgb(50,50,50)
+              - type: custom:mod-card
+                card:
+                  type: custom:button-card
+                  show_name: true
+                  show_icon: false
+                  show_state: false
+                  entity: binary_sensor.balboa_spa_heater
+                  name: HEATER
+                  styles:
+                    card:
+                      - text-align: center
+                      - font-size: 10px
+                      - width: 90px
+                      - height: 8px
+                      - margin: 0 !important
+                      - padding: 0 !important
+                      - margin-top: 20px !important
+                      - margin-bottom: 0px !important
+                      - background: transparent
+                      - box-shadow: none
+                      - border: none
+                      - outline: none
+                    name:
+                      - color: var(--primary-text-color)
+                  state:
+                    - value: "on"
+                      color: rgb(255,180,0)
+                      styles:
+                        name:
+                          - color: rgb(255,180,0)
+                    - value: "off"
                       color: rgb(50,50,50)
                       styles:
                         name:
@@ -216,6 +263,8 @@ cards:
               - box-shadow: none
               - margin: 0 !important
               - padding: 0 !important
+              - border: none
+              - outline: none
             icon:
               - width: 25px
               - height: 40px
@@ -258,6 +307,8 @@ cards:
           - box-shadow: none
           - margin: 0 !important; /* Ensure no margin */
           - padding: 0 !important; /* Ensure no padding */
+          - border: none
+          - outline: none
         icon:
           - width: 25px
           - height: 25px
@@ -345,6 +396,8 @@ cards:
           - box-shadow: none
           - margin: 0 !important; /* Ensure no margin */
           - padding: 0 !important; /* Ensure no padding */
+          - border: none
+          - outline: none
         icon:
           - width: 27px
           - height: 27px
@@ -432,6 +485,8 @@ cards:
           - box-shadow: none
           - margin: 0 !important; /* Ensure no margin */
           - padding: 0 !important; /* Ensure no padding */
+          - border: none
+          - outline: none
         icon:
           - width: 25px
           - height: 25px
@@ -440,10 +495,10 @@ cards:
           - font-size: 14px
           - margin-bottom: 27px
       state:
-        - value: 'On'
+        - value: "On"
           icon: mdi:pump
           color: rgb(255,0,0)
-        - value: 'Off'
+        - value: "Off"
           icon: mdi:pump-off
           color: rgb(255,20,0)
   - type: custom:mod-card
@@ -462,6 +517,8 @@ cards:
           - box-shadow: none
           - margin: 0 !important; /* Ensure no margin */
           - padding: 0 !important; /* Ensure no padding */
+          - border: none
+          - outline: none
         icon:
           - width: 25px
           - height: 25px
@@ -470,9 +527,9 @@ cards:
           - font-size: 14px
           - margin-bottom: 27px
       state:
-        - value: 'On'
+        - value: "On"
           icon: mdi:car-parking-lights
           color: rgb(255,0,0)
-        - value: 'Off'
+        - value: "Off"
           icon: mdi:car-parking-lights
           color: rgb(255,20,0)
