@@ -1,17 +1,16 @@
 /*
 MQTT protocol for cummnucating with Balboa VL801D panel and Home assistant, should work with all Balboa 5xxDZ control systems and maybe VL802D
 
-Realse version 1.16
+Release version 1.16
 Fixed heat mode selectable 
-
 Patch bump 
 ElegantOTA 3.1.6
 Arduino_ESP32_OTA 0.3.1
 
-Realse version 1.15
+Release version 1.15
 Added that the HVAC should be disabled, if in time menu.
 
-Realse version 1.1
+Release version 1.1
 HVAC added and some smaller changes.
 */
  
