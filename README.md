@@ -2,7 +2,7 @@
 
 ### Release version 1.16
 - Smaller bug fixes
-- Patch bump 
+- Bump
  ElegantOTA 3.1.6,  Arduino_ESP32_OTA 0.3.1
 
 
