@@ -119,10 +119,10 @@ Could possibly work with the GS523DZ models as well, as its the same display, I 
 #### Display Data
 
 Display shows **29.5C** - How does that translates into the bitstream? The first 4 chunks is coded in BCD to 7 segment LCD (see reference) but only with 7 bits sinse the LSB always is (0). <br />
-2 = 1101101(0) = (Chunk 4) <br />
-9 = 1110011(0) = (Chunk 3) <br />
-5 = 1011011(0) = (Chunk 2) <br />
-C = 1001110(0) = (Chunk 1) <br />
+2 = 1101101(0) = (Chunk 1) <br />
+9 = 1110011(0) = (Chunk 2) <br />
+5 = 1011011(0) = (Chunk 3) <br />
+C = 1001110(0) = (Chunk 4) <br />
 
 | Chunk 1 - bit(1-7) | Chunk 2 - bit(8-14) | Chunk 3 - bit(15-21) | Chunk 4 - bit(22-28) | Chunk 5 - bit(29-71) | 
 | ------------------ | ------------------- | ------------------   | -------------------- | -------------------- |                     
