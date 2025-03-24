@@ -126,7 +126,7 @@ C = 1001110(0) = (Chunk 1) <br />
 
 | Chunk 4 - bit(0-7) | Chunk 3 - bit(8-14) | Chunk 2 - bit(15-21) | Chunk 1 - bit(22-28) | Chunk 5 - bit(29-71) | 
 | ------------------ | ------------------- | ------------------   | -------------------- | -------------------- |                     
-| LCD segment 1      |  LCD segment 2      |   LCD Segment 3      |   LCD segment 4      | 30 - Button down/up  |                    
+| LCD segment 1      |  LCD segment 2      |   LCD Segment 3      |   LCD segment 4      | 29 - Button down/up  |                    
 |                    |                     |                      |                      |                      |       
 |                    |                     |                      |                      |                      | 
 |                    |                     |                      |                      | 59 - Standard mode   | 
