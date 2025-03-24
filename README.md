@@ -124,7 +124,7 @@ Display shows **29.5C** - How does that translates into the bitstream? The first
 5 = 1011011(0) = (Chunk 2) <br />
 C = 1001110(0) = (Chunk 1) <br />
 
-| Chunk 4 - bit(0-6) | Chunk 3 - bit(7-13) | Chunk 2 - bit(14-20) | Chunk 1 - bit(21-27) | Chunk 5 - bit(28-71) | 
+| Chunk 4 - bit(1-7) | Chunk 3 - bit(8-14) | Chunk 2 - bit(15-21) | Chunk 1 - bit(22-28) | Chunk 5 - bit(29-71) | 
 | ------------------ | ------------------- | ------------------   | -------------------- | -------------------- |                     
 | LCD segment 1      |  LCD segment 2      |   LCD Segment 3      |   LCD segment 4      | 29 - Button down/up  |                    
 |                    |                     |                      |                      |                      |       
