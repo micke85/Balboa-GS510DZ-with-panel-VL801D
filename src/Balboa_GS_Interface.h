@@ -1,4 +1,4 @@
-// 2025-02-01 Version 1.1
+// 2025-06-17 Version 1.2
 
 #ifndef Balboa_GS_Interface_h
 #define Balboa_GS_Interface_h
@@ -54,8 +54,8 @@ class BalboaInterface {
    	bool TempMenu;					// Display Temp menu / Set						| Bit 40
    	bool displayBit41;				// Still unknown functionality, if at all used! | Bit 41
 	bool Blower;                  	// Blower running or not 						| Bit 42
-	bool displayBit43;				// Something to do with Filters	I belive		| Bit 43			*shows on in menu under filters and also when filter 1 & 2 are on.			
-	bool Filtration;				// Show Filtrations or ?						| Bit 44			*A bit uncertain about this is really right, start jumping when in eco and sleep mode
+	bool Filtration;				// Show Filtrations								| Bit 43			*shows on in menu under filters and also when filter 1 & 2 are on.			
+	bool displayBit44;				// Jumps on/off									| Bit 44			*Pulse on/off 1sec every 5-15min and sometimes every 30sec- 2min, Start the temp sensor ? 
 	bool displayBit45;				// Still unknown functionality, if at all used! | Bit 45			*got it to go on/off for some reason, while pressing buttons, but cant reapete it.
 	bool displayBit46;				// Still unknown functionality, if at all used! | Bit 46
 	bool Lights;        			// SPA lights activated or not 					| Bit 47
