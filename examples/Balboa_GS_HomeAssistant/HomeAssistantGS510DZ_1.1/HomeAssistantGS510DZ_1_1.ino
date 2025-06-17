@@ -1,5 +1,7 @@
 /*
 MQTT protocol for cummnucating with Balboa VL801D panel and Home assistant, should work with all Balboa 5xxDZ control systems and maybe VL802D
+Release version 1.18
+Change filteration bit to 43 from 44 should be more correct
 
 Release version 1.16
 Fixed heat mode selectable 
@@ -45,7 +47,7 @@ const char* mqtt_server                  = "";   		// MQTT Boker IP, your home M
 const int mqtt_port                      = 1883;        // MQTT Broker PORT, default is 1883 but can be anything.
 const char *mqtt_user                    = "";          // MQTT Broker User Name
 const char *mqtt_pwd                     = "";      	// MQTT Broker Password 
-const char* ReleaseVersion               = "1.16";       // Release Version latest version you will find at https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D
+const char* ReleaseVersion               = "1.18";       // Release Version latest version you will find at https://github.com/micke85/Balboa-GS510DZ-with-panel-VL801D
 
 //Globals 
 bool debug                               = false;      // If true activate debug values to write to serial port
@@ -317,7 +319,7 @@ void loop() {
           START.setState(Balboa.START);
           STOP.setState(Balboa.STOP);
           Filtration.setState(Balboa.Filtration);
-          BitTest.setState(Balboa.displayBit43);                       //Test bit  
+          BitTest.setState(Balboa.displayBit45);                       //Test bit  
           timeMenu.setState(Balboa.TimeMenu);                          //time menu status
           TempMenu.setState(Balboa.TempMenu);                          //Temp menu status   
           modeProg.setState(Balboa.ModeProg);                          //Mode/prog
