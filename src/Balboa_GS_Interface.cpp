@@ -1,4 +1,4 @@
-// 2025-01-02 Version 1.15
+// 2025-06-17 Version 1.16
 
 
 #include "Balboa_GS_Interface.h" 
@@ -254,7 +254,7 @@ void BalboaInterface::decodeDisplayData() {
                         }
                         else Blower = false;
                   } 
-				 else if (x == 43) {
+				  else if (x == 43) {
                         if ( displayDataBuffer[x] == 1){
                             Filtration = true;
                         }
