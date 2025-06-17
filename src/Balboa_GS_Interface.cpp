@@ -254,17 +254,17 @@ void BalboaInterface::decodeDisplayData() {
                         }
                         else Blower = false;
                   } 
-				  else if (x == 43) {
-                        if ( displayDataBuffer[x] == 1){
-                            displayBit43 = true;
-                        }
-                        else displayBit43 = false;
-                  } 
-				  else if (x == 44) {
+				 else if (x == 43) {
                         if ( displayDataBuffer[x] == 1){
                             Filtration = true;
                         }
                         else Filtration = false;
+                  } 
+				  else if (x == 44) {
+                        if ( displayDataBuffer[x] == 1){
+                            displayBit44 = true;
+                        }
+                        else displayBit44 = false;
                   } 
 				  else if (x == 45) {
                         if ( displayDataBuffer[x] == 1){
