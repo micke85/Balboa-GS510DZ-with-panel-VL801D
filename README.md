@@ -3,6 +3,7 @@
 
 ## Release version 1.18
 - Filtration bit, changed to bit 43 instead of 44, Seams to be correct bit now.
+- Testbit, set to bit 45
 
 ### Release version 1.16
 - Smaller bug fixes
