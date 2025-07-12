@@ -1,4 +1,4 @@
-// 2025-06-17 Version 1.16
+// 2025-06-17 Version 1.18
 
 
 #include "Balboa_GS_Interface.h" 
@@ -228,7 +228,7 @@ void BalboaInterface::decodeDisplayData() {
                         if ( displayDataBuffer[x] == 1){
                             TempUp = true;
                         }
-                        else TempDown = false;
+                        else TempUp = false;						//change from TempDown = false
                   }   
 				  else if (x == 39) {
                         if ( displayDataBuffer[x] == 1){
@@ -456,7 +456,7 @@ void BalboaInterface::decodeDisplayData() {
                  
 				float Temperature = (10 * LCD_display_1.toInt() + LCD_display_2.toInt() + 0.1 * LCD_display_3.toInt());
 				 
-				if (TempMenu == true && Temperature>=1 && ModeProg == true) { 	//check if everything is in its order
+				if (TempMenu == true && Temperature>=10 && ModeProg == true) { 	//check if everything is in its order
 					setTemperature = Temperature;								//Update set temp
 					}
 				
