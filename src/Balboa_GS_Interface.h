@@ -1,4 +1,4 @@
-// 2025-06-17 Version 1.2
+// 2025-06-28 Version 1.3
 
 #ifndef Balboa_GS_Interface_h
 #define Balboa_GS_Interface_h
@@ -37,7 +37,27 @@ class BalboaInterface {
 	// float SetTemp;                						// Set water temp  
 	float setTemperature;                				// The wanted set temperature
  			  
+/*
+Missing bits that I belive should exist out of fualty codes pdf.
+https://www.allswimltd.com/pdf/balboa-fault-codes.pdf?srsltid=AfmBOorRqk3oc4-cBM6PYkwiPf8y5Q_3vPP1zIlX71N8ZhzvZEACxIgO&utm_source=chatgpt.com
 
+Bit triggering the "Low Temp" under 4°C freeze protection mode
+ICE, IC, or FREEZE COND Message
+OHH, HH, or HTR TEMP LMT SERVICE REQD Message
+Bit triggering Pr – Priming mode 
+"CFE" or "CONFIG ERROR"
+"CrC" Checksum Error
+Standby Mode, "Drain" (drn) Mode
+gFI or GFCI FAILURE Message
+HFL, HL, or HTR FLOW LOW Message
+LF or LOW FLOW Message
+PHH or PH IS HIGH LOWER PH Message
+PSt or PERSIST FAIL Message
+rt9 or TEST GFCI Message
+rCA or CHANGE MINERAL CARTRIDGE Message
+rCO or CLEAN COVER Message
+rdr or DRAIN WATER Message
+*/
 
 	String LCD_display;				// The text shown on display					| Bit 1-28
 	bool displayButton;        		// Up/Down button pressed 						| Bit 29
@@ -56,8 +76,8 @@ class BalboaInterface {
 	bool Blower;                  	// Blower running or not 						| Bit 42
 	bool Filtration;				// Show Filtrations								| Bit 43			*shows on in menu under filters and also when filter 1 & 2 are on.			
 	bool displayBit44;				// Jumps on/off									| Bit 44			*Pulse on/off 1sec every 5-15min and sometimes every 30sec- 2min, Start the temp sensor ? 
-	bool displayBit45;				// Still unknown functionality, if at all used! | Bit 45			*got it to go on/off for some reason, while pressing buttons, but cant reapete it.
-	bool displayBit46;				// Still unknown functionality, if at all used! | Bit 46
+	bool displayBit45;				// Jumps on/off									| Bit 45			*Pulse on/off 1 sec every 1-5min
+	bool displayBit46;				// Still unknown functionality, if at all used! | Bit 46			* shows as 0 or off havent got it to change
 	bool Lights;        			// SPA lights activated or not 					| Bit 47
 	bool Pump1;        				// Pump 1 running or not 						| Bit 48
 	bool Pump2;        				// Pump 2 running or not						| Bit 49
