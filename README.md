@@ -1,7 +1,7 @@
 ### MQTT protocol for cummnucating with Balboa VL801D panel and Home assistant, should work with all Balboa 5xxDZ control systems and maybe VL802D
 
 ## Release version 1.2
-- Fixed the problem with set temperature jumping. (Forcing to not store if temperature is under 10 degrees)
+- Fixed the problem with set temperature jumping. (Forcing to not store, if temperature is under 10 degrees) This is to overcome the first lost bits in mqtt transfer, that happens sometimes.
 - corrected (x == 38) (Button Up/temp Up) else false (TempUp och and not TempDown)
 
 ## Release version 1.18
