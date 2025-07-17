@@ -10,7 +10,7 @@
 
 ### Release version 1.16
 - Smaller bug fixes
-- Bump
+- The script has been validated with the latest version of Plugin
  ElegantOTA 3.1.6,  Arduino_ESP32_OTA 0.3.1
 
 
