@@ -95,7 +95,7 @@ It should now automatically add the Balboa SPA under MQTT.
 
 If that doesn't work, check the log under Mosquitto Broker and you may need to restart HA or possibly reinstall Mosquitto Broker and restart HA.
 
-
+## Project
 Identifing bits are still ongoing. List of definition you will find in the Balboa_GS_Interface.h file
 
 This is built on the the great work by MagnusPer project with GS510SZ and Shuraxxx, GS523DZ.
