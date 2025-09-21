@@ -88,6 +88,14 @@ Working project in it´s end of alpha face.
 - Over The Air update now working
   http://unitsIPadress/update
   
+## Start communication with MQTT and Home Assistant
+Install and start Mosquitto Broker in settings/add-ons/
+Add users under Settings/people/ and the username and password for the MQTT Broker that you specified in the Arduino file HomeAssistantGS510DZ_x.x
+It should now automatically add the Balboa SPA under MQTT.
+
+If that doesn't work, check the log under Mosquitto Broker and you may need to restart HA or possibly reinstall Mosquitto Broker and restart HA.
+
+
 Identifing bits are still ongoing. List of definition you will find in the Balboa_GS_Interface.h file
 
 This is built on the the great work by MagnusPer project with GS510SZ and Shuraxxx, GS523DZ.
